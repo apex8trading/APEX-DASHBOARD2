@@ -3,10 +3,14 @@ import pandas as pd
 import sqlite3, os, hashlib, secrets, io, base64, time
 import plotly.express as px
 import plotly.graph_objects as go
-import MetaTrader5 as mt5
 from datetime import datetime, timedelta
-import joblib
-from sklearn.ensemble import RandomForestClassifier
+
+# Conditional import for MetaTrader5 (Windows only)
+try:
+    import MetaTrader5 as mt5
+    MT5_AVAILABLE = True
+except ImportError:
+    MT5_AVAILABLE = False
 
 st.set_page_config(page_title="APEX SUPREME", layout="wide", initial_sidebar_state="expanded")
 
